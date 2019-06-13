@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+    <route>
+        <from uri="rest:POST:/split"/>
+
+        
+        <to uri="file:/home/sol/workspace/dummies/190613_split_camel/fileOut?fileName=splitted.txt"/>
+    </route>
+</routes>
