@@ -1,0 +1,1 @@
+{scope4=CDS, scope0=OFM, scope1=PWB, scope2=RBS, scope3=default}
