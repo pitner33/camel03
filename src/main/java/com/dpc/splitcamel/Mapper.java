@@ -16,9 +16,8 @@ public class Mapper implements Processor {
     public void process(Exchange exchange) {
         String body = exchange.getIn().getBody(String.class);
         JSONObject input = new JSONObject(body);
-
         Map<String, String> output = processor(input);
-        exchange.getIn().setBody(output.toString());
+        exchange.getIn().setBody(output);
     }
 
     private Map<String, String> processor(JSONObject input) {
@@ -28,6 +27,7 @@ public class Mapper implements Processor {
         if (!values.has("is_enable")) {
             return  null;
         }
+
         JSONArray array = values.getJSONArray("is_enable");
         for (int i = 0; i < array.length(); i++) {
             JSONObject attribute = (JSONObject) array.get(i);

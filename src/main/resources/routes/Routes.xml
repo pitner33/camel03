@@ -4,10 +4,17 @@
         <from uri="rest:POST:/split"/>
         <process ref="Mapper"/>
 
-<!--        <split strategyRef="discardAggregationStrategy">-->
-<!--            <simple>${body.entrySet()}</simple>-->
-<!--        </split>-->
-
-        <to uri="file:/home/sol/workspace/dummies/190613_split_camel/fileOut?fileName=splitted.txt"/>
+        <split strategyRef="discardAggregationStrategy">
+            <simple>${body.entrySet()}</simple>
+            <choice>
+                <when>
+                    <simple>${body.value} == "CDS"</simple>
+                    <setBody>
+                        <simple>${body.value}</simple>
+                    </setBody>
+                    <to uri="file:/home/sol/workspace/dummies/190613_split_camel/fileOut?fileName=splitted_CDS.txt"/>
+                </when>
+            </choice>
+        </split>
     </route>
 </routes>
